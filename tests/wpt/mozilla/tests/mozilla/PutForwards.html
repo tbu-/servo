@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<title></title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script>
+"use strict";
+test(function() {
+  var w = Window.prototype;
+  w.location = Location.prototype
+  w.location.href = "foobar";
+  assert_equals(w.location, "foobar");
+}, "Forwarded attributes are handled correctly");
+
+test(function() {
+  /*assert_throws(null, function() {*/
+    var t = new TestBinding;
+    t.forwardedAttribute = false;
+  /*});*/
+}, "Changing an attribute through a readonly forward throws");
+</script>
